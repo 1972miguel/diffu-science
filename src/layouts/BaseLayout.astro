@@ -13,12 +13,12 @@ const { title = 'DiffuScience' } = Astro.props;
   <body class="min-h-screen flex flex-col">
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
       <nav class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-        <a href="/" class="text-2xl font-bold tracking-tight text-gray-900 hover:text-[var(--color-accent-dark)] transition">
+        <a href="/" class="text-3xl font-bold tracking-tight text-gray-900 hover:text-[var(--color-accent-dark)] transition">
           DiffuScience
         </a>
-        <div class="flex gap-8 text-sm font-medium uppercase tracking-wide">
+        <div class="flex gap-8 text-lg font-medium uppercase tracking-wide">
           <a href="/" class="hover:text-[var(--color-accent-dark)] transition">Inicio</a>
-          <a href="/sobre" class="hover:text-[var(--color-accent-dark)] transition">Sobre</a>
+          <a href="/sobre" class="hover:text-[var(--color-accent-dark)] transition">Nosotros</a>
           <a href="/blog" class="hover:text-[var(--color-accent-dark)] transition">Blog</a>
           <a href="/rutas" class="hover:text-[var(--color-accent-dark)] transition">Rutas</a>
         </div>
@@ -31,9 +31,9 @@ const { title = 'DiffuScience' } = Astro.props;
 
     <footer class="bg-gray-900 text-gray-300 py-12">
       <div class="max-w-7xl mx-auto px-6 text-center">
-        <p class="text-lg font-semibold text-white mb-2">DiffuScience</p>
-        <p class="text-sm">Difundiendo conocimiento científico a través de la naturaleza y la exploración.</p>
-        <p class="mt-6 text-xs">&copy; {new Date().getFullYear()} — Hecho con Astro</p>
+        <p class="text-xl font-semibold text-white mb-2">DiffuScience</p>
+        <p class="text-lg">Difundiendo conocimiento científico a través de la naturaleza y la exploración.</p>
+        <p class="mt-6 text-sm">&copy; {new Date().getFullYear()} — Hecho por Mig</p>
       </div>
     </footer>
   </body>
