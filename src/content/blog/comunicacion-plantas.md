@@ -1,6 +1,6 @@
 ---
 title: "La comunicación subterránea de las plantas"
-date: 2026-03-22:00:00Z
+date: 2026-03-22
 excerpt: "Cómo las raíces y los hongos forman una red de internet natural que permite a los árboles 'hablar' entre sí y compartir recursos."
 cover: /assets/images/blog/comunicacion-plantas.jpg
 tags: ["Botánica", "Ecología", "Micorrizas"]
