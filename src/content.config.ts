@@ -1,29 +1,16 @@
-import { z, defineCollection } from "astro:content";
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders"; // Importante: Nueva función para cargar archivos
 
-const blogCollection = defineCollection({
-  type: "content",
+const blog = defineCollection({
+  // El loader ahora se encarga de buscar los archivos
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/blog" }),
   schema: z.object({
     title: z.string(),
     date: z.date(),
     excerpt: z.string(),
-    cover: z.string().optional(),
-    tags: z.array(z.string()).optional().default([]),
+    cover: z.string(),
+    tags: z.array(z.string()),
   }),
 });
 
-const rutasCollection = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    dificultad: z.enum(["Fácil", "Media", "Alta"]),
-    distancia_km: z.number(),
-    tiempo_horas: z.string(),
-    excerpt: z.string(),
-    cover: z.string().optional(),
-  }),
-});
-
-export const collections = {
-  blog: blogCollection,
-  rutas: rutasCollection,
-};
+export const collections = { blog };

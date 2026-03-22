@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content'; // Importamos 'render' en lugar de usar .render()
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { id: post.id } // Cambiamos slug por id 
+  }));
+}
+
+const { id } = Astro.params; // Obtenemos el id de la URL
+const posts = await getCollection('blog');
+const post = posts.find(p => p.id === id); // Buscamos el post específico
+
+if (!post) return Astro.redirect('/404');
+
+// En Astro 5/6, el renderizado se hace así:
+const { Content } = await render(post); 
+---
+
+<BaseLayout title={post.data.title}>
+  <article class="py-20 md:py-28">
+    <div class="max-w-4xl mx-auto px-6 prose prose-lg">
+      {post.data.cover && (
+        <img 
+          src={post.data.cover} 
+          alt={post.data.title}
+          class="w-full h-96 object-cover rounded-2xl mb-12 shadow-2xl"
+        />
+      )}
+      
+      <h1 class="text-5xl md:text-6xl mb-8 font-bold">{post.data.title}</h1>
+      
+      <p class="text-xl text-gray-600 mb-12">
+        <time>
+  {post.data.date.toLocaleDateString('es-ES', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric',
+    timeZone: 'UTC' 
+  })}
+</time> • 
+        {post.data.tags?.join(', ') || 'Ciencia • Naturaleza'}
+      </p>
+      
+      <div class="prose-p:text-lg">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
