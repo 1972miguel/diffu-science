@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const post = await getEntry('blog', slug!);
+
+if (!post) return Astro.redirect('/404');
+
+const { Content } = await post.render();
+---
+
+<BaseLayout title={post.data.title}>
+  <article class="py-20 md:py-28">
+    <div class="max-w-4xl mx-auto px-6 prose prose-lg prose-headings:font-bold">
+      {post.data.cover && (
+        <Image 
+          src={post.data.cover} 
+          alt={post.data.title}
+          width={1200}
+          class="w-full h-96 object-cover rounded-2xl mb-12 shadow-2xl"
+        />
+      )}
+      
+      <h1 class="text-5xl md:text-6xl mb-8">{post.data.title}</h1>
+      
+      <p class="text-xl text-gray-600 mb-12">
+        <time>{post.data.date.toLocaleDateString('es-ES')}</time> • {post.data.tags?.join(', ') || 'Ciencia • Naturaleza'}
+      </p>
+      
+      <div class="prose-p:text-lg prose-li:text-lg">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

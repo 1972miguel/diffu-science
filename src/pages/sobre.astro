@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import img1 from '../assets/images/sobre-nosotros-1.jpg';
+import img2 from '../assets/images/sobre-nosotros-2.jpg';
+import { Image } from 'astro:assets';
+---
+
+<BaseLayout title="Sobre el Proyecto">
+<section class="py-24 bg-[var(--color-bg-light)] texture-bg">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-5xl font-black text-center mb-16 tracking-wide" style="color: var(--color-accent);">
+      Research Themes
+    </h2>
+    {/* grid de cards con fondo blanco, sombra sutil, sin bordes fuertes */}
+<div class="grid md:grid-cols-2 gap-8">
+  <Image src={img1} alt="Descripción 1" class="rounded-2xl shadow-xl" width={600} />
+  <Image src={img2} alt="Descripción 2" class="rounded-2xl shadow-xl" width={600} />
+</div>
+  </div>
+</section>
+</BaseLayout>

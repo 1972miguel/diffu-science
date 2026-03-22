@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const rutas = (await getCollection('rutas'))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<BaseLayout title="Rutas de Senderismo Científicas">
+  <section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <h1 class="text-5xl md:text-6xl font-bold text-center mb-16">Rutas Científicas</h1>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {rutas.map(ruta => (
+          <a href={`/rutas/${ruta.slug}`} class="group block bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            {ruta.data.cover && (
+              <img src={ruta.data.cover} alt={ruta.data.title} class="w-full h-56 object-cover group-hover:scale-105 transition duration-500" />
+            )}
+            <div class="p-8">
+              <h3 class="text-2xl font-bold mb-3 group-hover:text-[var(--color-primary)] transition">{ruta.data.title}</h3>
+              <div class="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
+                <span>Dificultad: <strong>{ruta.data.dificultad}</strong></span>
+                <span>{ruta.data.distancia_km} km</span>
+                <span>{ruta.data.tiempo_horas} h</span>
+              </div>
+              <p class="text-gray-600 line-clamp-3">{ruta.data.excerpt}</p>
+              <p class="mt-6 text-[var(--color-primary)] font-semibold inline-flex items-center">
+                Ver ruta →
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

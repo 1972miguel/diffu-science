@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+
+const { title = 'DiffuScience' } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} | Difusión Científica</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+      <nav class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold tracking-tight text-gray-900 hover:text-[var(--color-primary)] transition">
+          DiffuScience
+        </a>
+        <div class="flex gap-8 text-sm font-medium uppercase tracking-wide">
+          <a href="/" class="hover:text-[var(--color-primary)] transition">Inicio</a>
+          <a href="/sobre" class="hover:text-[var(--color-primary)] transition">Sobre</a>
+          <a href="/blog" class="hover:text-[var(--color-primary)] transition">Blog</a>
+          <a href="/rutas" class="hover:text-[var(--color-primary)] transition">Rutas</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow pt-24">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300 py-12">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <p class="text-lg font-semibold text-white mb-2">DiffuScience</p>
+        <p class="text-sm">Difundiendo conocimiento científico a través de la naturaleza y la exploración.</p>
+        <p class="mt-6 text-xs">&copy; {new Date().getFullYear()} — Hecho con Astro</p>
+      </div>
+    </footer>
+  </body>
+</html>
