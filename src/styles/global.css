@@ -1,39 +1,75 @@
+/* src/styles/global.css */
+
 @import "tailwindcss";
-/* Si quieres Brandon Grotesque o Fjalla One → usa @font-face o CDN confiable */
 
-:root {
-  --color-bg-light: #eeeff2;
-  --color-bg-white: #ffffff;
-  --color-bg-dark: #0f1419;
-  --color-bg-grey: #59626d;
-  --color-accent: #fcd200; /* el dorado característico */
-  --color-text-dark: #0f1419;
-  --color-text-muted: #3e3e3e;
-  --color-text-light: #ffffff;
+@layer base {
+  :root {
+    /* Colores principales */
+    --color-bg-light: #eeeff2; /* fondo claro tipo Sears Lab */
+    --color-bg-white: #ffffff;
+    --color-bg-dark: #0f1419; /* negro/gris oscuro para footer y secciones oscuras */
+    --color-bg-grey: #59626d; /* gris medio del footer original */
 
-  --font-heading: "Lato", sans-serif;
-  --font-body: "Proxima Nova", Arial, Helvetica, sans-serif;
+    /* Color de acento principal → AZUL #2563eb */
+    --color-accent: #5375ba; /* azul vivo, buen contraste */
+    --color-accent-dark: #2d3f6f; /* hover / más oscuro (blue-700) */
+    --color-accent-light: #98c6ff; /* opcional: variante clara si la necesitas */
+
+    /* Textos */
+    --color-text-dark: #0f1419;
+    --color-text-muted: #4b5563; /* gris medio para textos secundarios */
+    --color-text-light: #ffffff;
+
+    /* Fuentes (como en Sears Lab / tweaks observados) */
+    --font-heading: "Lato", sans-serif;
+    --font-body: "Proxima Nova", Arial, Helvetica, sans-serif;
+  }
+
+  body {
+    @apply bg-[var(--color-bg-white)] text-[var(--color-text-dark)] antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+  }
+
+  a {
+    @apply text-[var(--color-accent)] hover:text-[var(--color-accent-dark)] transition;
+  }
+
+  /* Mejora accesibilidad en botones y enlaces */
+  .btn-primary {
+    @apply bg-[var(--color-accent)] text-white font-bold uppercase tracking-wider px-8 py-4 rounded hover:bg-[var(--color-accent-dark)] transition shadow-md;
+  }
+
+  .link-underline {
+    @apply text-[var(--color-accent)] font-semibold hover:underline;
+  }
+
+  /* Fondo textura sutil (como en Sears Lab) */
+  .texture-bg {
+    background-image: url("https://static1.squarespace.com/static/5e756d52cbef7c44bc1b6e78/t/5e99d5b2d85a234bb87d293d/1587140020693/grey+texture.png");
+    background-repeat: repeat;
+    background-size: 800px;
+  }
+
+  /* Footer estilo Sears (gris oscuro + posible logo arriba) */
+  footer {
+    @apply bg-[var(--color-bg-grey)] text-gray-300 py-16 relative;
+  }
+
+  /* Opcional: si quieres que el footer use exactamente #111827 */
+  /* footer { background-color: #111827; } */
 }
 
-body {
-  font-family: var(--font-body);
-  @apply bg-[var(--color-bg-white)] text-[var(--color-text-dark)] antialiased;
-}
-
-h1,
-h2,
-h3 {
-  font-family: var(--font-heading);
-  font-weight: 900;
-}
-
-a {
-  @apply text-[var(--color-accent)] hover:underline;
-}
-
-/* Fondo textura sutil en secciones "grey" o "texture" */
-.texture-bg {
-  background-image: url("https://static1.squarespace.com/static/5e756d52cbef7c44bc1b6e78/t/5e99d5b2d85a234bb87d293d/1587140020693/grey+texture.png");
-  background-repeat: repeat;
-  background-size: 800px;
+/* Puedes añadir más capas o estilos custom aquí */
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-md hover:shadow-xl transition p-6;
+  }
 }

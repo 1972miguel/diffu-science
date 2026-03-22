@@ -8,28 +8,29 @@ import { Image } from 'astro:assets';
 
 <BaseLayout title="Inicio">
   <!-- Hero full como Sears Lab -->
-<section class="relative h-screen flex items-center justify-center bg-cover bg-center" 
-  <Image
-    src={heroImg}
-    alt="Naturaleza y ciencia"
-    class="absolute inset-0 w-full h-full object-cover"
-    loading="eager"
-    format="webp"
-    quality={85}
-  />
-  <div class="absolute inset-0 bg-black/50"></div>  <!-- overlay oscuro como en muchos Squarespace -->
-  <div class="relative z-10 text-center text-white px-6 max-w-5xl">
-    <h1 class="text-6xl md:text-8xl font-black tracking-tight leading-none mb-6" style="font-family: 'Lato', sans-serif; font-weight: 900;">
-      {/* Tu título grande */}
-    </h1>
-    <p class="text-2xl md:text-3xl max-w-4xl mx-auto mb-12 font-light">
-      {/* subtítulo */}
-    </p>
-    <a href="/sobre" class="inline-block bg-[var(--color-accent)] text-[var(--color-text-dark)] font-bold uppercase tracking-wider px-12 py-6 rounded hover:bg-yellow-400 transition">
-      Conoce más →
-    </a>
-  </div>
-</section>
+  <section class="relative h-screen flex items-center justify-center bg-cover bg-center">
+    <Image
+      src={heroImg}
+      alt="Naturaleza y ciencia"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      format="webp"
+      quality={85}
+    />
+    <div class="absolute inset-0 bg-black/50"></div>  <!-- overlay oscuro -->
+    
+    <div class="relative z-10 text-center text-white px-6 max-w-5xl">
+      <h1 class="text-6xl md:text-8xl font-black tracking-tight leading-none mb-6" style="font-family: 'Lato', sans-serif; font-weight: 900;">
+        Ciencia en movimiento,<br> naturaleza en evolución
+      </h1>
+      <p class="text-2xl md:text-3xl max-w-4xl mx-auto mb-12 font-light">
+        Difundimos ciencia accesible, rigurosa y visualmente atractiva...
+      </p>
+      <a href="/sobre" class="inline-block bg-[var(--color-accent-light)] text-[var(--color-text-dark)] font-bold uppercase tracking-wider px-12 py-6 rounded hover:bg-[var(--color-accent)] transition">
+        Conoce más →
+      </a>
+    </div>
+  </section>
 
   <!-- Sección intro / enfoque -->
   <section class="py-24 bg-white">
@@ -43,10 +44,22 @@ import { Image } from 'astro:assets';
         <a href="/sobre" class="text-[var(--color-primary)] font-semibold hover:underline">Saber más sobre nosotros →</a>
       </div>
       <div class="grid grid-cols-2 gap-6">
-        <img src={img1}
-             class="rounded-2xl shadow-xl object-cover h-64 w-full" alt="Bosque">
-        <img ssrc={img2}
-             class="rounded-2xl shadow-xl object-cover h-64 w-full" alt="Montaña">
+        <Image
+          src={img1}
+          alt="Bosque"
+          class="rounded-2xl shadow-xl object-cover h-64 w-full"
+          width={400}
+          format="webp"
+          quality={80}
+        />
+        <Image
+          src={img2}
+          alt="Montaña"
+          class="rounded-2xl shadow-xl object-cover h-64 w-full"
+          width={400}
+          format="webp"
+          quality={80}
+        />
       </div>
     </div>
   </section>
